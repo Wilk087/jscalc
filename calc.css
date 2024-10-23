@@ -46,8 +46,8 @@ body {
     background-color: #b0b0b0;
 }
 
-.button.placeholder {
-    background-color: #d3d3d3;
+.button.history {
+    background-color: #ff4444;
     color: white;
 }
 

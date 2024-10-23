@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let currentInput = '0';
     let previousInput = '';
     let operator = null;
+    let history = [];
 
     buttons.forEach(button => {
         button.addEventListener('click', function () {
@@ -20,6 +21,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 allClear();
             } else if (this.classList.contains('plus-minus')) {
                 changeSign();
+            } else if(this.classList.contains('history')){
+                displayHistory()
             } else {
                 handleNumber(value);
             }
@@ -68,6 +71,7 @@ document.addEventListener('DOMContentLoaded', function () {
             default:
                 return;
         }
+        history.push(`${previousInput} ${operator} ${currentInput} = ${result}`);
 
         currentInput = result.toString();
         operator = null;
@@ -90,5 +94,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function changeSign() {
         currentInput = currentInput * -1;
+    }
+
+    function displayHistory() {
+        alert(history.join('\n'));
+        allClear()
     }
 });
